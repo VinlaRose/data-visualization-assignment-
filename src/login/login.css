@@ -1,0 +1,143 @@
+.login{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginWrapper{
+    height: 70%;
+    width: 70%;
+    
+
+    display: flex;  
+    background-image: linear-gradient(45deg, #fe3c72, #FF7854 );
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+.loginLeft{
+    flex: 1;
+    
+}
+.loginRight{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.loginLogo{
+    font-size: 50px;
+    font-weight: 800;
+    margin-left: 50px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    
+}
+
+.logoDesc{
+    font-size: 20px;
+    font-weight: 400;
+    margin-left: 50px;
+    color: #ffffff;
+}
+
+.loginBox{
+    height: 300px;
+    padding: 20px;
+    background-color: #424242;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin-right: 50px;
+    margin-left: 50px;
+    justify-content: space-between;
+}
+.signinBox{
+    height: 400px;
+    padding: 20px;
+    background-color: #424242;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin-right: 50px;
+    margin-left: 50px;
+    justify-content: space-between;
+}
+
+
+
+.loginaddress{
+    height: 35px;
+    border-radius: 10px;
+    border: solid #ffffff;
+    font-size: 18px;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.loginaddress:focus{
+    outline: none;
+}
+
+.loginButton{
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    background-color: #fe3c72;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.forgotPswrd{
+    text-align: center;
+    color: #fe3c72;
+    
+}
+
+.guestLogin{
+    text-align: center;
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+    
+}
+
+.loginRegister{
+     height: 40px;
+    border-radius: 10px;
+    border: none;
+    /* background-color: #fe3c72; */
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 60%;
+    align-self: center;
+    background-color: #fe3c72;
+}
+
+.loginRegister:hover {
+    background-color: #FF7854;
+}
+
+@media (max-width: 768px){
+    .loginLeft{
+        display: none;
+    }
+    .loginWrapper{
+        height: 100%;
+        width: 100%;
+        
+    
+       
+        
+    
+    }
+}

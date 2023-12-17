@@ -2,7 +2,9 @@ const initialState = {
     data: [],
     filteredData: [],
     loading: true,
-    error: null
+    error: null,
+    users: [],
+    currentUser: null,
    
   };
   
