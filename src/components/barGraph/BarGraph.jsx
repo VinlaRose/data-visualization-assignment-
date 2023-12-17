@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, LineChart, CartesianGrid, Line } from 'recharts';
 
-const CustomTooltip = ({ active, payload, label, age, gender }) => {
+const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
       <div className="custom-tooltip">
@@ -29,19 +29,19 @@ const BarGraph = ({ data }) => {
   }, {});
 
   const totalData = Object.keys(totalValues).map(key => ({ category: key, value: totalValues[key] }));
-
+const [chartTask, setChartTask] = useState("")
   const handleBarClick = (event) => {
     const clickedTask = event.category;
+    setChartTask(clickedTask)
     console.log(clickedTask);
     console.log(data);
 
-    // Function to calculate the total value of the clicked task for each day
     function calculateTotalTask(arr, clickedTask) {
       const result = {};
 
       arr.forEach(obj => {
         const day = obj.day;
-        const taskValue = parseInt(obj[clickedTask], 10) || 0; // Convert task value to integer
+        const taskValue = parseInt(obj[clickedTask], 10) || 0; 
 
         if (!result[day]) {
           result[day] = { day, total: 0 };
@@ -50,19 +50,19 @@ const BarGraph = ({ data }) => {
         result[day].total += taskValue;
       });
 
-      // Convert the result object to an array
+    
       const resultArray = Object.values(result);
 
       return resultArray;
     }
 
-    // Calculate total value of clicked task for each date
+    
     const newTotalTaskArray = calculateTotalTask(data, clickedTask);
 
-    // Set the state to trigger a re-render
+    
     setTotalTaskArray(newTotalTaskArray);
 
-    // Output the result
+   
     console.log(`Total ${clickedTask}`, newTotalTaskArray);
   };
 
@@ -79,7 +79,9 @@ const BarGraph = ({ data }) => {
       </ResponsiveContainer>
       <div>
         {totalTaskArray && (
-          <ResponsiveContainer width="100%" height={300}>
+          <div>
+            <h3>Chart of Total hours spent on task {chartTask} on the given dates</h3>
+            <ResponsiveContainer width="100%" height={300}>
             <LineChart data={totalTaskArray}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="day" label={{ value: 'Day', position: 'insideBottom', offset: -10 }} />
@@ -88,6 +90,8 @@ const BarGraph = ({ data }) => {
               <Line type="monotone" dataKey="total" stroke="#1a1a1a" />
             </LineChart>
           </ResponsiveContainer>
+          </div>
+          
         )}
       </div>
     </div>

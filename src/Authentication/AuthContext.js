@@ -1,19 +1,20 @@
 import { createContext, useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { PostDataContext } from "../Data/posts";
+
 
 
 
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const {getUsersData, dispatch} = useContext(PostDataContext);
+
    
     const navigate = useNavigate();
     const location = useLocation();
 
     const [creds, setCreds] = useState({
         username: '',
+        email: '',
         password: ''
       });
 
@@ -44,25 +45,27 @@ export function AuthProvider({ children }) {
     handleSubmit(new Event('submit'));
     console.log(JSON.stringify(creds))
     try {
+
+      console.log(creds)
    
-      const response = await fetch("/api/auth/login" , {
+      const response = await fetch("https://data-visualization.vinlarose.repl.co/login" , {
       method: 'POST',
       body: JSON.stringify(creds)});
 
       const userData = await response.json();
       console.log(userData)
 
-      const {encodedToken, foundUser} = userData
-      if(encodedToken){
-        localStorage.setItem(
-          key,
-          JSON.stringify({foundUser: foundUser, encodedToken: encodedToken})
-        );
-        setUser(JSON.parse(localStorage.getItem(key)));
-        navigate(location?.state?.from?.pathname);
-        dispatch({ type: 'CURRENT_USER', payload: foundUser });
+      const {token} = userData
+      // if(token){
+      //   localStorage.setItem(
+      //     key,
+      //     JSON.stringify({ token: token})
+      //   );
+      //   setUser(JSON.parse(localStorage.getItem(key)));
+      //   navigate(location?.state?.from?.pathname);
+      //   // dispatch({ type: 'CURRENT_USER', payload: foundUser });
         
-      };
+      // };
 
      
    
@@ -82,8 +85,7 @@ export function AuthProvider({ children }) {
 
 
   const [signUpcreds, setSignUpCreds] = useState({
-    firstName: '',
-    lastName: '',
+    email: "",
     username: '',
     password: ''
   });
@@ -118,23 +120,24 @@ export function AuthProvider({ children }) {
       handleSignUpSubmit(new Event('submit'));
       try {
      
-        const response = await fetch("/api/auth/signup" , {
+        const response = await fetch("https://data-visualization.vinlarose.repl.co/signup" , {
         method: 'POST',
         body: JSON.stringify(signUpcreds)});
   
         const userData = await response.json();
         console.log(userData)
+        console.log(userData.user)
   
-        const {encodedToken, createdUser} = userData
-        if(encodedToken){
+        const {token} = userData
+        if(token){
           localStorage.setItem(
             key,
-            JSON.stringify({createdUser: createdUser, encodedToken: encodedToken})
+            JSON.stringify({token: token})
           );
           setUser(JSON.parse(localStorage.getItem(key)));
-          getUsersData();
+         
           navigate("/");
-          dispatch({ type: 'CURRENT_USER', payload: createdUser });
+          // dispatch({ type: 'CURRENT_USER', payload: createdUser });
         };
   
        
@@ -155,7 +158,7 @@ export function AuthProvider({ children }) {
 
   
 
-const {encodedToken} = user
+const {token} = user
   
 
   
@@ -163,7 +166,7 @@ const {encodedToken} = user
   
 
   return (
-    <AuthContext.Provider  value={{user, encodedToken,handleLogin ,logoutHandler, handleInputChange, handleSubmit, creds,handleGuestLogin,
+    <AuthContext.Provider  value={{user, token,handleLogin ,logoutHandler, handleInputChange, handleSubmit, creds,handleGuestLogin,
     handleSignUp, handleSignUpSubmit, handleSinUpInputChange, signUpcreds}}>
       {children}
     </AuthContext.Provider>

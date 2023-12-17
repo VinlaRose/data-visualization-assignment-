@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import '../login/login.css';
-import { AuthContext } from '../../Authentication/AuthContext';
+import { AuthContext } from '../Authentication/AuthContext';
+
 
 
 export default function Signin(){
@@ -10,8 +11,8 @@ export default function Signin(){
         <div className="login">
             <div className="loginWrapper">
                 <div className="loginLeft">
-                    <div className="loginLogo">Slaybook</div>
-                    <div className="logoDesc">Connect with friends and world around you on slaybook.</div>
+                    <div className="loginLogo">Data Visualizer</div>
+                    <div className="logoDesc"></div>
 
                 </div>
                 <div className="loginRight">
@@ -21,19 +22,13 @@ export default function Signin(){
                 <div className="signinBox">
                 
                 <input 
-                placeholder="First Name" 
+                placeholder="email" 
                 className="loginaddress" 
-                type="firstName"
-                name="firstName"
-                value={signUpcreds.firstName}
+                type="email"
+                name="email"
+                value={signUpcreds.email}
                 onChange={handleSinUpInputChange}/>
-                <input 
-                placeholder="Last Name" 
-                className="loginaddress" 
-                type="lastName"
-                name="lastName"
-                value={signUpcreds.lastName}
-                onChange={handleSinUpInputChange}/>
+                
                 <input 
                 placeholder="username" 
                 className="loginaddress" 
@@ -56,8 +51,6 @@ export default function Signin(){
                 
                 </div>
                 </form>
-                {/* <span className="forgotPswrd">Already registered?</span>
-                <button className="loginRegister" onClick={() => navigate("/login")}>Login</button> */}
 
                 </div>
 

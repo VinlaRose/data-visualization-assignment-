@@ -129,7 +129,7 @@ const FilteringData = () => {
 
     <div>
       <div className='filters-container'>
-      <div>
+      <div className='calander-box'>
       <label>Time Range:</label>
       <input type="date" value={startDate} className='calander' onChange={(e) => setStartDate(e.target.value)} />
 
@@ -138,7 +138,7 @@ const FilteringData = () => {
       </div>
      
 
-      
+      <div>
       <select value={age} onChange={(e) => setAge(e.target.value)}>
         <option value="">Select Age Group</option>
         <option value="15-25">15-25</option>
@@ -151,6 +151,8 @@ const FilteringData = () => {
         <option value="Male">Male</option>
         <option value="Female">Female</option>
       </select>
+      </div>
+      
 
 
       <div className='filterBtns'>

@@ -1,17 +1,18 @@
 import React, { useContext } from 'react';
 import './login.css';
-import { AuthContext } from '../../Authentication/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Authentication/AuthContext';
 
 export default function Login(){
     const {handleLogin, creds, handleInputChange, handleSubmit, handleGuestLogin}  = useContext(AuthContext);
+    
     const navigate = useNavigate();
     return(
         <div className="login">
             <div className="loginWrapper">
                 <div className="loginLeft">
-                    <div className="loginLogo">Slaybook</div>
-                    <div className="logoDesc">Connect with friends and world around you on slaybook.</div>
+                    <div className="loginLogo">Data Visualizer</div>
+                    <div className="logoDesc"></div>
 
                 </div>
                 <div className="loginRight">
@@ -24,6 +25,13 @@ export default function Login(){
                 type="username"
                 name="username"
                 value={creds.username}
+                onChange={handleInputChange}/>
+                <input 
+                placeholder="email" 
+                className="loginaddress" 
+                type="email"
+                name="email"
+                value={creds.email}
                 onChange={handleInputChange}/>
                 <input 
                 placeholder="Password" 

@@ -67,32 +67,6 @@ let storedStartDate, storedEndDate, storedAgeGroup, storedGender;
   console.log(reqData);
 
 
-// Function to calculate the total value of property A for each day
-function calculateTotalA(arr) {
-  const result = {};
-
-  arr.forEach(obj => {
-    const day = obj.day;
-    const A = parseInt(obj.A, 10) || 0; // Convert A to integer
-
-    if (!result[day]) {
-      result[day] = { day, Atotal: 0 };
-    }
-
-    result[day].Atotal += A;
-  });
-
-  // Convert the result object to an array
-  const resultArray = Object.values(result);
-
-  return resultArray;
-}
-
-// Calculate total value of A for each date
-const totalAArray = calculateTotalA(reqData);
-
-// Output the result
-console.log('Total A Array:', totalAArray);
 
 
 

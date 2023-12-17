@@ -6,9 +6,10 @@ import { AuthContext } from "./AuthContext";
 export function RequiresAuth({ children }) {
   
   const { user } = useContext(AuthContext);
+  console.log(user)
 
   const {encodedToken} = user
-
+console.log(encodedToken)
   
   let location = useLocation();
  
