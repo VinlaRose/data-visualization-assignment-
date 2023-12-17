@@ -74,7 +74,7 @@ const FilteringData = () => {
   };
 
   let urlShare = buildQueryString(filters)
-  let fullURL = `http://localhost:3000/${urlShare}`
+  let fullURL = `https://data-visualization-assignment.vercel.app/${urlShare}`
   
 
   const formattedStartDate = startDate ? formatDateString(startDate) : '';
