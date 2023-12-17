@@ -1,0 +1,38 @@
+.filters-container{
+    background-color: #F7C8E0;
+    padding: 20px;
+    margin: 30px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+input{
+    border-radius: 5px;
+    padding: 4px;
+    border: none;
+}
+
+select{
+    border-radius: 5px;
+    padding: 4px;
+    border: none;
+}
+
+option{
+    background-color: rgb(127, 238, 238);
+}
+
+.filterBtns{
+    display: flex;
+    
+
+}
+
+.filterBtns button{
+    margin-right: 8px;
+    color: blueviolet;
+    background-color: white;
+    border: none;
+    
+}
