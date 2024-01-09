@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchData, fetchDataWithFilters } from '../../redux/actions';
 import Cookies from 'js-cookie';
@@ -9,12 +9,7 @@ import ShareButton from '../UrlSharing/URLsharing';
 const FilteringData = () => {
   const dispatch = useDispatch();
 
-  function formatDateString(dateString) {
-    const rewDate = new Date(dateString).toLocaleDateString('en-GB');
-    const [day, month, year] = rewDate.split('/');
-    const formattedDay = parseInt(day, 10).toString(); 
-    return `${formattedDay}/${month}/${year}`;
-  }
+
 
   function convertDateFormat(inputDate) {
     const [day, month, year] = inputDate.split('/');
@@ -77,9 +72,6 @@ const FilteringData = () => {
   let fullURL = `https://data-visualization-assignment.vercel.app/${urlShare}`
   
 
-  const formattedStartDate = startDate ? formatDateString(startDate) : '';
-  const formattedEndDate = endDate ? formatDateString(endDate) : '';
-
   function formatDateString(dateString) {
     const rewDate = new Date(dateString).toLocaleDateString('en-GB');
     const [day, month, year] = rewDate.split('/');
@@ -118,12 +110,11 @@ const FilteringData = () => {
 
   
 
-    // Fetch data with default filters
     dispatch(fetchData());
     
   };
 
-  const shareUrl = 'https://example.com';
+ 
 
   return (
 

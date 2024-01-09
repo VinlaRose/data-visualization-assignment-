@@ -1,6 +1,6 @@
 export const fetchData = () => async (dispatch) => {
     try {
-      const response = await fetch('https://data-visualization.vinlarose.repl.co/items');
+      const response = await fetch('https://913d4fb0-5514-4e47-afdc-34612f96aa87-00-32tfmal0mon3g.riker.replit.dev/items');
       const data = await response.json();
       dispatch({ type: 'FETCH_DATA_SUCCESS', payload: data });
     } catch (error) {
@@ -12,7 +12,7 @@ export const fetchData = () => async (dispatch) => {
 
   export const fetchDataWithFilters = (filters) => async (dispatch) => {
     try {
-      const url = `https://data-visualization.vinlarose.repl.co/items/getData${buildQueryString(filters)}`;
+      const url = `https://913d4fb0-5514-4e47-afdc-34612f96aa87-00-32tfmal0mon3g.riker.replit.dev/items/getData${buildQueryString(filters)}`;
       console.log(url)
       
       const response = await fetch(url);
